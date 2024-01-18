@@ -1,95 +1,67 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import Image from "next/image";
+import styles from "./page.module.css";
+import { useEffect } from "react";
+// import { useEffect } from 'react';
+import Plot from "react-plotly.js";
+import Home2 from "./page copy";
 
 export default function Home() {
+  const y0 = Array.from({ length: 50 }, () => Math.random());
+  const y1 = Array.from({ length: 50 }, () => Math.random() + 1);
+
+  const trace1 = {
+    y: y0,
+    type: "box",
+    name: "Box Plot 1",
+  };
+
+  const trace2 = {
+    y: y1,
+    type: "box",
+    name: "Box Plot 2",
+  };
+
+  const data = [trace1, trace2];
+
+  useEffect(() => {
+    console.log("here");
+  }, []);
+
+  const boxPlotData = [
+    {
+      y: [Math.random(), Math.random() + 1],
+      type: "box",
+      name: "Box Plot",
+    },
+  ];
+
+  const scatterPlotData = [
+    {
+      x: [1, 2, 3],
+      y: [2, 6, 3],
+      type: "scatter",
+      mode: "lines+markers",
+      marker: { color: "red" },
+      name: "Scatter Plot",
+    },
+    {
+      type: "bar",
+      x: [1, 2, 3],
+      y: [2, 5, 3],
+      name: "Bar Plot",
+    },
+  ];
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      "box plot"
+      {/* <Plot data={data} layout={{ title: "Box Plot" }} /> */}
+      <br></br>
+      <Home2></Home2>
+      {/* Use Plot component for the box plot */}
+      {/* <Plot data={boxPlotData} layout={{ title: 'Box Plot' }} /> */}
+      {/* Use Plot component for the scatter plot */}
     </main>
-  )
+  );
 }
